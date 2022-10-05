@@ -22,6 +22,7 @@
   "dependencies": {
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
+    "@prisma/client": "^4.4.0",
     "bcrypt": "^5.0.1",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
@@ -32,6 +33,7 @@
     "module-alias": "^2.2.2",
     "morgan": "^1.10.0",
     "path": "^0.12.7",
+    "prisma": "^4.4.0",
     "swagger-ui-express": "^4.5.0",
     "ts-openapi": "^1.1.4",
     "tsconfig-paths": "^4.1.0",
