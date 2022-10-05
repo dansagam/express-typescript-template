@@ -4,6 +4,9 @@ import type { UserConfig } from "@commitlint/types";
 
 const Configuration: UserConfig = {
   extends: ["@commitlint/config-conventional"],
+  defaultIgnores: true,
+  helpUrl:
+    "https://github.com/conventional-changelog/commitlint/#what-is-commitlint",
   rules: {
     "body-leading-blank": [1, "always"],
     "body-max-line-length": [2, "always", 100],
