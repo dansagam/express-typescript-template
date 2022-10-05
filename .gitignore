@@ -28,3 +28,5 @@ hrms-web.iml
 
 package-lock.json
 junit.xml
+dist
+./dist
