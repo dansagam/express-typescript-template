@@ -3,6 +3,7 @@ import cors from "cors";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import Local from "./Local";
+import userRoutes from "../routes/userRoutes";
 
 const app: Application = expresses();
 Local.init(app);
@@ -12,6 +13,9 @@ app.use(expresses.json());
 app.get("/", (_req: Request, res) => {
   res.send("Hello World!");
 });
+console.log(Local.config().apiPrefix);
+app.use(`/${Local.config().apiPrefix}/auth`, userRoutes);
+
 export const nodeEnv = Local.config().nodeEnv;
 if (nodeEnv === "development") {
   app.use(morgan("dev"));

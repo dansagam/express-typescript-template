@@ -9,7 +9,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: Gjkhsds^871253296
-      POSTGRES_DB: api_nest
+      POSTGRES_DB: type_api
     networks:
       backend-server:
         aliases:

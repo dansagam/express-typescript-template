@@ -5,6 +5,10 @@
   "author": "kayode ogunnowo",
   "license": "MIT",
   "scripts": {
+    "prisma:dev:deploy": "prisma migrate deploy",
+    "db:dev:rm": "docker compose rm dev-db -s -f -v",
+    "db:dev:up": "docker compose up dev-db -d",
+    "db:dev:restart": "yarn db:dev:rm && yarn db:dev:up && yarn prisma:dev:deploy",
     "build": "tsc --project ./tsconfig.json",
     "start": "node ./src/index.ts",
     "server": "nodemon -q src/index.ts",
