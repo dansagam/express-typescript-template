@@ -1,4 +1,4 @@
-import { createUser, getUsers } from "../controllers/userController";
+import { createUser, getUsers } from "../controllers/authController";
 import expressn, { Router } from "express";
 
 const router: Router = expressn.Router();
