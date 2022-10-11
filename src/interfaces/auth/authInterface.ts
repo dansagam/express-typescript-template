@@ -22,3 +22,7 @@ export enum Role {
   ADMIN,
   STUDENT,
 }
+
+export interface DeleteParams {
+  id: string;
+}

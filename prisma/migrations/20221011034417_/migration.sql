@@ -3,12 +3,12 @@ CREATE TYPE "Role" AS ENUM ('ADMIN', 'STUDENT');
 
 -- CreateTable
 CREATE TABLE "users" (
-    "id" SERIAL NOT NULL,
+    "id" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
     "email" TEXT NOT NULL,
-    "firstName" TEXT,
-    "lastName" TEXT,
+    "firstname" TEXT NOT NULL,
+    "lastname" TEXT NOT NULL,
     "role" "Role" NOT NULL DEFAULT 'STUDENT',
     "password" TEXT NOT NULL,
 
@@ -36,7 +36,7 @@ CREATE TABLE "bookmarks" (
     "title" TEXT NOT NULL,
     "description" TEXT,
     "link" TEXT NOT NULL,
-    "userId" INTEGER NOT NULL,
+    "userId" TEXT NOT NULL,
 
     CONSTRAINT "bookmarks_pkey" PRIMARY KEY ("id")
 );

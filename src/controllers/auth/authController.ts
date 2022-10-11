@@ -2,11 +2,12 @@ import { Response, Request, NextFunction } from "express";
 import { PrismaClient } from "@prisma/client";
 import {
   CreateAuthBodyRequest,
+  DeleteParams,
   IAddUserPayloadDto,
-} from "interfaces/auth/authInterface";
+} from "../../interfaces/auth/authInterface";
+import { encryptPassword } from "../../utils/passwordEncryption";
 
 const prisma = new PrismaClient();
-
 export const createUser = async (
   req: CreateAuthBodyRequest,
   res: Response,
@@ -14,6 +15,7 @@ export const createUser = async (
 ) => {
   try {
     const data: IAddUserPayloadDto = req.body;
+    data.password = encryptPassword(data.password);
     const user = await prisma.user.create({
       data,
     });
@@ -48,6 +50,28 @@ export const getUsers = async (
         data: foundUser,
       });
     }
+  } catch (err) {
+    res.status(400);
+    next(err);
+  }
+};
+
+export const removeUser = async (
+  req: Request<DeleteParams>,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    const user = await prisma.user.delete({
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    res.status(201).json({
+      success: true,
+      data: user,
+    });
   } catch (err) {
     res.status(400);
     next(err);
