@@ -15,10 +15,11 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  email     String  @unique
-  hash      String
-  firstName String?
-  lastName  String?
+  email     String @unique
+  firstname String
+  lastname  String
+  role      Role   @default(STUDENT)
+  password  String
 
   bookmarks Bookmark[]
 
@@ -47,4 +48,9 @@ model Bookmark {
   user   User @relation(fields: [userId], references: [id])
 
   @@map("bookmarks")
+}
+
+enum Role {
+  ADMIN
+  STUDENT
 }

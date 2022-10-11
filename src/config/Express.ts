@@ -4,6 +4,7 @@ import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import Local from "./Local";
 import userRoutes from "../routes/userRoutes";
+import { errHandler, notFound } from "../middlewares/errorMiddlewares";
 
 const app: Application = expresses();
 Local.init(app);
@@ -15,6 +16,8 @@ app.get("/", (_req: Request, res) => {
 });
 console.log(Local.config().apiPrefix);
 app.use(`/${Local.config().apiPrefix}/auth`, userRoutes);
+app.use(notFound);
+app.use(errHandler);
 
 export const nodeEnv = Local.config().nodeEnv;
 if (nodeEnv === "development") {

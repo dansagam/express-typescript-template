@@ -1,19 +1,24 @@
 import { Response, Request, NextFunction } from "express";
 import { PrismaClient } from "@prisma/client";
+import {
+  CreateAuthBodyRequest,
+  IAddUserPayloadDto,
+} from "interfaces/auth/authInterface";
 
 const prisma = new PrismaClient();
 
 export const createUser = async (
-  req: Request,
+  req: CreateAuthBodyRequest,
   res: Response,
   next: NextFunction,
 ) => {
   try {
-    const data = req.body;
+    const data: IAddUserPayloadDto = req.body;
     const user = await prisma.user.create({
       data,
     });
 
+    user;
     if (user) {
       res.status(200);
       res.json({
