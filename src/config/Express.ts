@@ -4,9 +4,9 @@ import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import pathToSwaggerUI from "swagger-ui-dist";
 import Local from "./Local";
-import userRoutes from "../routes/userRoutes";
-import { errHandler, notFound } from "../middlewares/errorMiddlewares";
-import authEncryption from "../middlewares/authEncryption";
+import userRoutes from "@/routes/userRoutes";
+import { errHandler, notFound } from "@/middlewares/errorMiddlewares";
+import authEncryption from "@/middlewares/authEncryption";
 
 const swggert = pathToSwaggerUI.absolutePath();
 const app: Application = expresses();

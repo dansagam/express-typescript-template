@@ -5,7 +5,7 @@ import { PrismaClient } from "@prisma/client";
 //   DeleteParams,
 //   IAddUserPayloadDto,
 // } from "../../interfaces/auth/authInterface";
-import { encryptPassword } from "../../utils/passwordEncryption";
+import { encryptPassword } from "@/utils/passwordEncryption";
 import {
   CreateAuthBodyRequest,
   DeleteParams,
