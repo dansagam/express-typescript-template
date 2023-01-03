@@ -1,11 +1,16 @@
 import { Response, Request, NextFunction } from "express";
 import { PrismaClient } from "@prisma/client";
+// import {
+//   CreateAuthBodyRequest,
+//   DeleteParams,
+//   IAddUserPayloadDto,
+// } from "../../interfaces/auth/authInterface";
+import { encryptPassword } from "../../utils/passwordEncryption";
 import {
   CreateAuthBodyRequest,
   DeleteParams,
   IAddUserPayloadDto,
-} from "../../interfaces/auth/authInterface";
-import { encryptPassword } from "../../utils/passwordEncryption";
+} from "@/interfaces/auth/authInterface";
 
 const prisma = new PrismaClient();
 export const createUser = async (
