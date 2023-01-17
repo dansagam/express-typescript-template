@@ -1,0 +1,19 @@
+FROM node:lts-alpine
+ENV NODE_ENV=production
+WORKDIR /usr/src/app
+COPY ["package.json", "yarn.lock*", "./"]
+
+RUN yarn global add  typescript
+
+RUN yarn global add nodemon
+RUN yarn global add corepack
+
+RUN yarn install 
+COPY . .
+EXPOSE 5821
+RUN chown -R node /usr/src/app
+USER node
+
+#Build to project
+RUN yarn run build
+CMD ["yarn", "run", "start"]

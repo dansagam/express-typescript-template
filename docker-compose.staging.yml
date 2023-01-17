@@ -1,0 +1,45 @@
+
+version: "3.9"
+services:
+  dev-db: 
+    image: postgres:latest
+    container_name: typescript-api-postgres-database
+    ports:
+      - "5432:5431"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Gjkhsds^871253296
+      POSTGRES_DB: type_api
+    networks:
+      backend-server:
+        aliases:
+          - postgres
+  api:
+    build:
+      context: .
+      dockerfile: docker/dev/Dockerfile
+    image: bg-boiler-api
+    ports:
+      - 5200:5200
+    env_file:
+      - ./.env
+    restart: always
+    # environment:
+    #   NODE_ENV: production
+  node-app:
+    build: 
+      context: .
+      dockerfile: ./docker/Dockerfile
+      target: development
+    command: npm run dev
+    env_file:
+      - ./.env
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "5905:5905"
+
+networks:
+  backend-server:
+    
