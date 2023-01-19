@@ -1,5 +1,5 @@
 FROM node:lts-alpine
-ENV NODE_ENV=production
+# ENV NODE_ENV=production
 WORKDIR /usr/src/app
 COPY ["package.json", "yarn.lock*", "./"]
 
@@ -14,6 +14,8 @@ EXPOSE 5821
 RUN chown -R node /usr/src/app
 USER node
 
+RUN yarn prisma generate --schema ./prisma/schema.prisma
+
 #Build to project
 RUN yarn run build
-CMD ["yarn", "run", "start"]
+CMD ["yarn", "run", "dev"]

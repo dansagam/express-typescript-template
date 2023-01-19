@@ -4,18 +4,19 @@ services:
     build:
       context: .
       dockerfile: docker/dev/Dockerfile
-    command: sh -c "yarn install && yarn run dev"
-    image: bg-boiler-api
+    image: bg_boiler_api
+    container_name: bg_boiler_container
+    command: [sh, -c, "cd /usr/src/app npx prisma migrate dev && yarn run dev"]
     ports:
-      - 5200:5821
+      - 5821:5821
     env_file:
       - ./.env
     restart: unless-stopped
     volumes:
-      - ./app:/app
+      - ./:/usr/src/app
     # environment:
-    #   NODE_ENV: production
+    #   NODE_ENV: productions
 
-networks:
-  backend-server:
+# networks:
+#   backend-server:
     

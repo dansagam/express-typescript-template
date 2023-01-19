@@ -11,23 +11,27 @@
     "db:dev:restart": "yarn db:dev:rm && yarn db:dev:up && yarn prisma:dev:deploy",
     "build": "tsc --project ./tsconfig.json",
     "start": "node ./src/index.ts",
-    "server": "nodemon -q src/index.ts",
+    "server": "nodemon dist/index.ts",
     "dev": "concurrently \"tsc --project ./tsconfig.json --watch\" \"npm run server\"",
     "dev-main": "tsc --project ./tsconfig.json --watch & nodemon dist",
     "help": "nodemon --watch 'src' -e ts,tsx --exec ts-node ./src",
     "test": "jest",
+    "watch-ts": "tsc -w",
+    "watch-node": "nodemon dist/index.ts",
     "format": "prettier --write \"**/*.+(js|jsx|json|css|md|ts|tsx)\"",
     "format:check": "prettier --list-different \"src/**/*.{js,jsx,json,css,md,ts,tsx}\"",
     "pretty-quick": "pretty-quick",
     "prepare": "husky install",
     "lint-and-fix": "eslint . --ext .ts .tsx --fix",
-    "lint": "eslint \"src/**/*.{ts,tsx,js,jsx}\""
+    "lint": "eslint \"src/**/*.{ts,tsx,js,jsx}\"",
+    "watch": "concurrently -k -p \"npm run watch-ts\" \"npm run watch-node\""
   },
   "dependencies": {
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
-    "@prisma/client": "^4.4.0",
+    "@prisma/client": "^4.9.0",
     "@sendgrid/mail": "^7.7.0",
+    "@tsconfig/recommended": "^1.0.1",
     "bcrypt": "^5.0.1",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
@@ -38,7 +42,6 @@
     "module-alias": "^2.2.2",
     "morgan": "^1.10.0",
     "path": "^0.12.7",
-    "prisma": "^4.4.0",
     "swagger-ui": "^4.14.2",
     "swagger-ui-dist": "^4.14.2",
     "swagger-ui-express": "^4.5.0",
@@ -74,7 +77,6 @@
     }
   },
   "devDependencies": {
-    "@tsconfig/recommended": "^1.0.1",
     "@types/bcrypt": "^5.0.0",
     "@types/cookie-parser": "^1.4.3",
     "@types/cors": "^2.8.12",
@@ -93,6 +95,7 @@
     "lint-staged": "^13.0.3",
     "nodemon": "^2.0.20",
     "prettier": "^2.7.1",
+    "prisma": "^4.9.0",
     "ts-jest": "^29.0.3"
   }
 }
