@@ -17,7 +17,7 @@ class Local {
     const year = new Date().getFullYear();
     const copyright = `Copyright ${year} ${name} | All Rights Reserved`;
     const jwtExpiresIn = process.env.JWT_EXPIRES_IN || 3;
-    const apiPrefix = process.env.API_PREFIX || "api";
+    const apiPrefix = process.env.API_PREFIX || "api/vi";
     const nodeEnv = process.env.NODE_ENV || "development";
 
     return {

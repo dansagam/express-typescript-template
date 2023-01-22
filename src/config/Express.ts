@@ -11,16 +11,19 @@ import authEncryption from "@/middlewares/authEncryption";
 const swggert = pathToSwaggerUI.absolutePath();
 const app: Application = expresses();
 Local.init(app);
+
 app.use(cookieParser());
 app.use(cors());
 app.use(expresses.json());
+
 // app.get("/", (_req: Request, res) => {
 //   res.send("Hello World!");
 // });
 const apiBaseUrl = Local.config().apiPrefix;
 app.use(expresses.static(swggert));
-console.log(apiBaseUrl);
+
 app.use(`/${apiBaseUrl}/auth`, userRoutes);
+
 app.use(notFound);
 app.use(errHandler);
 app.use(authEncryption);
