@@ -9,7 +9,7 @@ import userRoutes from "@/routes/userRoutes";
 import { errHandler, notFound } from "@/middlewares/errorMiddlewares";
 import authEncryption from "@/middlewares/authEncryption";
 import { authSwagger, authSchema } from "@/routes/user.swagger";
-import swaggerDoc from "src/swagger";
+import swaggerDoc from "../swagger";
 
 // const swggert = pathToSwaggerUI.absolutePath();
 const app: Application = expresses();
