@@ -13,7 +13,7 @@
     "start": "node ./src/index.ts",
     "server": "nodemon dist/index.ts",
     "dev": "concurrently \"tsc --project ./tsconfig.json --watch\" \"npm run server\"",
-    "dev-main": "tsc --project ./tsconfig.json --watch & nodemon dist",
+    "dev-main": "tsc --project ./tsconfig.json --watch & nodemon dist/index.ts",
     "help": "nodemon --watch 'src' -e ts,tsx --exec ts-node ./src",
     "test": "jest",
     "watch-ts": "tsc -w",
@@ -59,14 +59,6 @@
       "prettier --write"
     ],
     "./src/**/*.ts": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "./*.js": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "./*.ts": [
       "eslint --fix",
       "prettier --write"
     ]
